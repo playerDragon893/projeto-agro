@@ -51,9 +51,6 @@ fetch(`/projeto-agro/backend/apis-php/pagina-planta.php?id=${id}`)
                 Começar cultivo
             </button>
         `;
-        
-       
-       
         const fasesContainer = document.createElement("div");
         fasesContainer.classList.add("pagina-planta-fase-container");
         
@@ -74,7 +71,10 @@ fetch(`/projeto-agro/backend/apis-php/pagina-planta.php?id=${id}`)
                     <strong>Dica:</strong>
                     ${fase.dica_cuidado}
                 </p>
-            
+                <img
+                    src="${fase.imagem_url}"
+                    alt="${fase.nome_fase}"
+                >
             `;
 
             fasesContainer.appendChild(fase_planta);
