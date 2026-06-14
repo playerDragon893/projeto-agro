@@ -4,10 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    
+    <nav id="navbar">
+
+  <a href="home.html" class="nav-logo">
+    AgroWiki
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="home.html#catalogo">Catálogo</a></li>
+  </ul>
+
+  <div class="nav-usuario">
+
+    <!-- estado: NÃO LOGADO -->
+    <!-- quando for pro PHP, trocar esse bloco por <?php if (!isset($_SESSION['usuario_id'])): ?> -->
+    <div id="nav-nao-logado">
+      <a href="login.html">Entrar</a>
+      <a href="cadastro.html">Cadastrar</a>
+    </div>
+
+    <!-- estado: LOGADO -->
+    <!-- PHP: <?php else: ?> -->
+    <div id="nav-logado" style="display:none;">
+      <a href="usuario-progresso.html">Meu Jardim</a>
+      <div class="nav-dropdown">
+        <button id="btn-dropdown">
+          <span class="nav-avatar">J</span> <!-- inicial do nome -->
+          <span class="nav-nome">João</span> <!-- nome do usuário -->
+        </button>
+        <ul id="dropdown-menu">
+          <li><a href="logout.html">Sair</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- PHP: <?php endif; ?> -->
+
+  </div>
+
+</nav>
     <h1>olaaa</h1>
     
     

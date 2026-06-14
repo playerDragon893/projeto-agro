@@ -1,33 +1,30 @@
+//card
 
-const plantas = [
-    {
-        id: 1,
-        name: "banana",
-        price:"1,99"
-    },
-    {
-        id: 2,
-        name: "tomate",
-        price:"3,99"
-    },
-     {
-        id: 3,
-        name: "abobora",
-        price:"9,99"
-    }
-]
+fetch('../../backend/apis-php/cardPlanta.php')
+    .then(resposta => resposta.json())
+    .then(dados =>{
+        console.log(dados);
+        
+        
+        dados.forEach(planta => {
+            console.log(planta.nome_comum);
+            const Planta_element = document.createElement("div");    
+            Planta_element.classList.add("card-planta");
 
-
-plantas.forEach(planta =>{
-    const card = document.createElement("div");
+            Planta_element.innerHTML = `
+               
+                <h2>${planta.nome_comum}</h2>
+                <p>${planta.descricao}</p>
+                <a href="planta.html?id=${planta.id}">
+                    Ver planta
+                </a>
+            `;
+            
+            document.body.appendChild(Planta_element);
+        
+        });
     
+    })
 
-     card.innerHTML = `
-        <h2>${planta.name}</h2>
-        <p>R$ ${planta.price}</p>
-        <a href="../../backend/apis-php/pagina-planta.php?id=${planta.id}">
-        Ver produto
-        </a>
-    `;
-    document.body.appendChild(card);
-});
+
+;

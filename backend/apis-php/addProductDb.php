@@ -16,7 +16,7 @@
 
    
 ?>
-
+   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +32,7 @@
 
         <br><br>
 
-        <label>Preço</label>
+        <label>Preço</label>    
         <input type="text" name="preco">
         
         <button type="submit">enviar</button>
