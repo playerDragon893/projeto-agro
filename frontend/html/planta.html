@@ -4,7 +4,7 @@ const id = params.get("id");
 console.log(id);
 
 
-fetch(`/projeto-agro/backend/apis-php/pagina-planta.php?id=${id}`)
+fetch(`/backend/apis-php/pagina-planta.php?id=${id}`)
     .then(res => res.json())
     .then(dados => {
         console.log(dados);

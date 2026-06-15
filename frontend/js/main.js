@@ -1,6 +1,6 @@
 //card
 
-fetch('../../backend/apis-php/cardPlanta.php')
+fetch('/backend/apis-php/cardPlanta.php')
     .then(resposta => resposta.json())
     .then(dados =>{
         console.log(dados);
