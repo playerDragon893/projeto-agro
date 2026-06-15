@@ -43,6 +43,9 @@
             if(strlen($senha) < 8){
                 $senhaERR = "senha muito pequena";
             }
+            elseif (!preg_match("/[a-zA-Z]/", $senha)) {
+            $senhaERR = "a senha precisa conter letras";
+            }
             else{
                 $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
             }
@@ -110,7 +113,7 @@
         if(headers_sent($file, $line)){
             die("Header quebrado em: $file linha $line");
         }
-        header("Location: /projeto-agro/frontend/html/home.html");
+        header("Location: /projeto-agro/frontend/html/home.php");
         exit;
     
     

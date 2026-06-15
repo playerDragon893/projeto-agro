@@ -2,18 +2,46 @@
 session_start();
 include '../conexaodb.php';
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $email = $_POST['email'];
-    $nome = "";
-    $senha = $_POST['senha'];
+    $user_email_ERR = "";
+    $user_senha_ERR = "";
+    
+    $user_email = $_POST['email'];
+    $user_senha = $_POST['senha'];
 
-    $sql = "SELECT email FROM usuarios WHERE email = :e";
-    $stmt->
+    $sql = "SELECT email, senha_hash, nome, id FROM usuarios WHERE email = :e";
+    $stmt = $conexao->prepare($sql);
+    $stmt->execute([
+        ":e" =>$user_email
+    ]);
+    $userdb = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if(!$userdb){
+        $user_email_ERR = "email nao encontrado";
+    }
+    else{
+        $senha_db = $userdb['senha_hash'];
+        if(!password_verify($user_senha, $senha_db)){
+            $user_senha_ERR = "senha incorreta";
+        }
+    }
+    //auth password
+    
 
-
+    if(!empty($user_email_ERR) || !empty($user_senha_ERR)){
+        $_SESSION['erros'] = [
+            'emailERR' => $user_email_ERR,
+            'senhaERR' => $user_senha_ERR
+        ];
+        header("Location: /projeto-agro/frontend/html/login-form.php");
+        exit;
+    }
+        echo "login ok";
+        session_regenerate_id(true);
+        $_SESSION['id'] = $userdb['id'];
+        $_SESSION['nome'] = $userdb['nome'];
+        $_SESSION['email'] = $userdb['email'];
+        
+        header("Location: /projeto-agro/frontend/html/home.php");
+        exit;
 }
-
-
-
-
-
 ?>

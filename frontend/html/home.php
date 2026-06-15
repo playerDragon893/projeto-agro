@@ -1,3 +1,9 @@
+<?php 
+  session_start();  
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,46 +20,48 @@
   </a>
 
   <ul class="nav-links">
-    <li><a href="home.html">Home</a></li>
-    <li><a href="home.html#catalogo">Catálogo</a></li>
+    <li><a href="home.php">Home</a></li>
+    <li><a href="home.php#catalogo">Catálogo</a></li>
   </ul>
 
   <div class="nav-usuario">
 
     <!-- estado: NÃO LOGADO -->
-    <!-- quando for pro PHP, trocar esse bloco por <?php if (!isset($_SESSION['usuario_id'])): ?> -->
+    <?php 
+    if(!isset($_SESSION['id'])):?>
+    
     <div id="nav-nao-logado">
-      <a href="login.html">Entrar</a>
+      <a href="login-form.php">Entrar</a>
       <a href="cadastro-form.php">Cadastrar</a>
+    
     </div>
-
-    <!-- estado: LOGADO -->
-    <!-- PHP: <?php else: ?> -->
-    <div id="nav-logado" style="display:none;">
+    
+    <?php else: ?>
+    
+      <!-- estado: LOGADO -->
+    <div id="nav-logado">
       <a href="usuario-progresso.html">Meu Jardim</a>
       <div class="nav-dropdown">
         <button id="btn-dropdown">
-          <span class="nav-avatar">J</span> <!-- inicial do nome -->
-          <span class="nav-nome">João</span> <!-- nome do usuário -->
+          <span class="nav-avatar "><?php echo strtoupper($_SESSION['nome'][0]) ?></span> <!-- inicial do nome -->
+          <span class="nav-nome"><?php echo $_SESSION['nome'] ?></span> <!-- nome do usuário -->
         </button>
         <ul id="dropdown-menu">
-          <li><a href="logout.html">Sair</a></li>
+          <li><a href="logout.php">Sair</a></li>
         </ul>
       </div>
     </div>
-    <!-- PHP: <?php endif; ?> -->
+    
+    <?php endif; ?>
 
   </div>
 
 </nav>
-    <h1>olaaa</h1>
     
-    
-    
-    
-    
-   
-    
+
+
+
+    <h1>catalogo</h1>
     <script src="../js/main.js"></script>
 </body>
 </html>

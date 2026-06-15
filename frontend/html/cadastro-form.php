@@ -12,8 +12,6 @@
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,6 +107,10 @@
         <button type="submit">
             Cadastrar
         </button>
+        
+            <a href="./home.php">Voltar</a>
+            <a href="./login-form.php">Login</a>
+       
     
     </form>
 </body>
