@@ -32,16 +32,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             'emailERR' => $user_email_ERR,
             'senhaERR' => $user_senha_ERR
         ];
-        header("Location: /projeto-agro/frontend/html/login-form.php");
+        header("Location: /frontend/html/login-form.php");
         exit;
     }
-        echo "login ok";
+    
         session_regenerate_id(true);
         $_SESSION['id'] = $userdb['id'];
         $_SESSION['nome'] = $userdb['nome'];
         $_SESSION['email'] = $userdb['email'];
         
-        header("Location: /projeto-agro/frontend/html/home.php");
+        header("Location: /frontend/html/home.php");
         exit;
 }
 ?>

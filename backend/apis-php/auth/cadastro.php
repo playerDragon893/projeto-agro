@@ -59,7 +59,7 @@
                 "emailERR" => $emailERR,
                 "senhaERR" => $senhaERR
             ];
-            header("Location: /projeto-agro/frontend/html/cadastro-form.php");
+            header("Location: /frontend/html/cadastro-form.php");
             exit;
         }
 
@@ -113,14 +113,9 @@
         if(headers_sent($file, $line)){
             die("Header quebrado em: $file linha $line");
         }
-        header("Location: /projeto-agro/frontend/html/home.php");
+        header("Location: /frontend/html/home.php");
         exit;
     
-    
-    
     }
-
-
-
 
 ?>

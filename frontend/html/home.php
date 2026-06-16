@@ -1,9 +1,6 @@
 <?php 
   session_start();  
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,8 +55,6 @@
 
 </nav>
     
-
-
 
     <h1>catalogo</h1>
     <script src="../js/main.js"></script>
