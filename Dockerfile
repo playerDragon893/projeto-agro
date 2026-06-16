@@ -3,8 +3,9 @@ FROM php:8.2-apache
 # Instala extensões do PDO MySQL
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 
-# Habilita mod_rewrite do Apache
-RUN a2enmod rewrite
+# Desativa MPMs conflitantes e garante apenas o mpm_prefork
+RUN a2dismod mpm_event mpm_worker 2>/dev/null || true \
+    && a2enmod mpm_prefork rewrite
 
 # Copia todo o projeto para o diretório do Apache
 COPY . /var/www/html/
