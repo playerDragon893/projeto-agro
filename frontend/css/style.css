@@ -534,4 +534,365 @@
   color: #52796f;
 }
 /* ===== FIM FOOTER ===== */
-/* ===== FIM BUSCA ===== */
+/* ===== FIM BUSCA ===== *//* ===== PÁGINA DA PLANTA ===== */
+.planta-hero {
+  background: linear-gradient(135deg, #1a4a2e 0%, #2d6a4f 60%, #40916c 100%);
+  padding: 48px 40px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.planta-emoji { font-size: 80px; flex-shrink: 0; }
+
+.planta-hero-texto { flex: 1; min-width: 220px; }
+
+.planta-nome {
+  font-size: 42px;
+  font-weight: 700;
+  color: #f0faf4;
+  line-height: 1.1;
+}
+
+.planta-cientifico {
+  font-size: 16px;
+  color: #95d5b2;
+  font-style: italic;
+  margin: 8px 0 16px;
+}
+
+.planta-desc {
+  font-size: 15px;
+  color: #b7e4c7;
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+.planta-btn-cultivo {
+  display: inline-block;
+  margin-top: 24px;
+  background: #95d5b2;
+  color: #1a4a2e;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 13px 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.planta-btn-cultivo:hover { background: #b7e4c7; }
+
+.planta-body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 32px;
+}
+
+.planta-secao-titulo {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2d6a4f;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 0.5px solid #d8f3dc;
+}
+
+.planta-grid-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.planta-info-card {
+  background: #fff;
+  border: 0.5px solid #d8f3dc;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.planta-info-label {
+  font-size: 11px;
+  color: #52796f;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.planta-info-valor {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a4a2e;
+}
+
+.planta-info-unidade {
+  font-size: 12px;
+  color: #52796f;
+  font-weight: 400;
+}
+
+.planta-grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.planta-detalhe {
+  background: #fff;
+  border: 0.5px solid #d8f3dc;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.planta-detalhe-titulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a4a2e;
+  margin-bottom: 12px;
+}
+
+.planta-detalhe-linha {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 7px 0;
+  border-bottom: 0.5px solid #f0faf4;
+  color: #52796f;
+}
+
+.planta-detalhe-linha:last-child { border-bottom: none; }
+.planta-detalhe-linha strong { color: #1a4a2e; }
+
+.planta-alerta {
+  background: #fff8e1;
+  border: 0.5px solid #ffe082;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 40px;
+}
+
+.planta-alerta-titulo {
+  font-size: 13px;
+  font-weight: 600;
+  color: #795800;
+  margin-bottom: 8px;
+}
+
+.planta-alerta-linha {
+  font-size: 13px;
+  color: #795800;
+  margin-bottom: 4px;
+}
+
+.planta-fases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.planta-fase {
+  background: #fff;
+  border: 0.5px solid #d8f3dc;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.planta-fase-num {
+  font-size: 11px;
+  font-weight: 600;
+  color: #95d5b2;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.planta-fase-nome {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a4a2e;
+  margin-bottom: 10px;
+}
+
+.planta-fase-desc {
+  font-size: 13px;
+  color: #52796f;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.planta-fase-dur {
+  font-size: 12px;
+  font-weight: 500;
+  color: #2d6a4f;
+  margin-bottom: 6px;
+}
+
+.planta-fase-dica {
+  font-size: 12px;
+  color: #52796f;
+  background: #f0faf4;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-top: 8px;
+}
+/* ===== FIM PÁGINA DA PLANTA ===== *//* ===== RESPONSIVIDADE MOBILE ===== */
+@media (max-width: 768px) {
+
+  /* NAVBAR */
+  #navbar {
+    padding: 0 20px;
+    height: 56px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-logo {
+    font-size: 17px;
+  }
+
+  #nav-nao-logado {
+    gap: 8px;
+  }
+
+  #nav-nao-logado a:last-child {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  /* HERO HOME */
+  .hero {
+    padding: 40px 20px 56px;
+  }
+
+  .hero-titulo {
+    font-size: 32px;
+  }
+
+  .hero-subtitulo {
+    font-size: 15px;
+  }
+
+  .hero-botoes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-btn-principal,
+  .hero-btn-secundario {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-stats {
+    gap: 24px;
+  }
+
+  /* BUSCA */
+  .busca {
+    padding: 40px 20px;
+  }
+
+  .busca-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .busca-input {
+    border-right: 1.5px solid #95d5b2;
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  .busca-btn {
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  /* CATÁLOGO */
+  .catalogo {
+    padding: 48px 20px;
+  }
+
+  .catalogo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* SOBRE */
+  .sobre {
+    padding: 48px 20px;
+  }
+
+  .sobre-conteudo {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .sobre-visual {
+    width: 100%;
+  }
+
+  .sobre-card-destaque {
+    padding: 32px 24px;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 40px 20px 0;
+  }
+
+  .footer-conteudo {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  /* PÁGINA DA PLANTA */
+  .planta-hero {
+    padding: 32px 20px;
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .planta-emoji {
+    font-size: 60px;
+  }
+
+  .planta-nome {
+    font-size: 32px;
+  }
+
+  .planta-desc {
+    font-size: 14px;
+  }
+
+  .planta-btn-cultivo {
+    width: 100%;
+  }
+
+  .planta-body {
+    padding: 32px 20px;
+  }
+
+  .planta-grid-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .planta-grid2 {
+    grid-template-columns: 1fr;
+  }
+
+  .planta-fases {
+    grid-template-columns: 1fr;
+  }
+
+}
+/* ===== FIM RESPONSIVIDADE MOBILE ===== */

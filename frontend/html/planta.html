@@ -1,92 +1,172 @@
-<script>
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
-console.log(id);
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomate - AgroWiki</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
 
+  <nav id="navbar">
+    <a href="home.html" class="nav-logo">AgroWiki</a>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="home.html#catalogo">Catálogo</a></li>
+    </ul>
+    <div class="nav-usuario">
+      <div id="nav-nao-logado">
+        <a href="login.html">Entrar</a>
+        <a href="cadastro.html">Cadastrar</a>
+      </div>
+      <div id="nav-logado" style="display:none;">
+        <a href="usuario-progresso.html">Meu Jardim</a>
+        <div class="nav-dropdown">
+          <button id="btn-dropdown">
+            <span class="nav-avatar">J</span>
+            <span class="nav-nome">João</span>
+          </button>
+          <ul id="dropdown-menu">
+            <li><a href="logout.html">Sair</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-fetch(`/projeto-agro/backend/apis-php/pagina-planta.php?id=${id}`)
-    .then(res => res.json())
-    .then(dados => {
-        console.log(dados);
-        console.log(dados.planta);
-        console.log(dados.planta.nome_comum);
-        
-        const planta = dados.planta;
-        const fases = dados.fases;
-        const card = document.createElement("div");
-        
-        card.classList.add("pagina-planta-card"); 
-        card.innerHTML = `
-            <h1>${planta.nome_comum}</h1>
-            <h3>${planta.nome_cientifico}</h3>
-            <p>${planta.descricao}</p>
-            <hr>
-            <h2>Informações de cultivo</h2>
-            <p><strong>Dias para germinação:</strong> ${planta.dias_germinacao}</p>
-            <p><strong>Dias para crescimento:</strong> ${planta.dias_crescimento}</p>
-            <p><strong>Dias para colheita:</strong> ${planta.dias_colheita}</p>
-            <p><strong>Água por dia:</strong> ${planta.agua_ml_dia} ml</p>
-            <p><strong>Frequência de rega:</strong> ${planta.frequencia_rega_dias} dia(s)</p>
-            <p><strong>Horas de sol:</strong> ${planta.horas_sol_dia} h/dia</p>
-            <hr>
-            <h2>Solo e clima</h2>
-            <p><strong>Tipo de solo:</strong> ${planta.tipo_solo}</p>
-            <p><strong>pH ideal:</strong> ${planta.ph_solo_ideal}</p>
-            <p><strong>Clima adequado:</strong> ${planta.clima_adequado}</p>
-            <p><strong>Temperatura mínima:</strong> ${planta.temperatura_min}°C</p>
-            <p><strong>Temperatura máxima:</strong> ${planta.temperatura_max}°C</p>
-            <p><strong>Umidade ideal:</strong> ${planta.umidade_ideal}</p>
-            <p><strong>Região ideal:</strong> ${planta.regiao_ideal}</p>
-            <hr>
-            <h2>Adubação</h2>
-            <p><strong>Tipo de adubo:</strong> ${planta.tipo_adubo}</p>
-            <p><strong>Frequência:</strong> ${planta.frequencia_adubacao}</p>
-            <p><strong>Espaçamento:</strong> ${planta.espacamento_cm} cm</p>
-            <p><strong>Profundidade do plantio:</strong> ${planta.profundidade_plantio_cm} cm</p>
-            <hr>
-            <h2>Problemas comuns</h2>
-            <p><strong>Pragas:</strong> ${planta.pragas_comuns}</p>
-            <p><strong>Doenças:</strong> ${planta.doencas_comuns}</p>
-            <button id="btn-comecar-cultivo">
-                Começar cultivo
-            </button>
-        `;
-        
-       
-       
-        const fasesContainer = document.createElement("div");
-        fasesContainer.classList.add("pagina-planta-fase-container");
-        
+  <!-- ===== HERO DA PLANTA ===== -->
+  <section class="planta-hero">
+    <div class="planta-emoji">🍅</div>
+    <div class="planta-hero-texto">
+      <h1 class="planta-nome">Tomate</h1>
+      <p class="planta-cientifico">Solanum lycopersicum</p>
+      <p class="planta-desc">O tomate é uma planta amplamente cultivada em hortas domésticas e produções comerciais. Necessita de boa incidência solar, irrigação frequente e solo rico em matéria orgânica.</p>
+      <button class="planta-btn-cultivo">🌱 Começar cultivo</button>
+    </div>
+  </section>
+  <!-- ===== FIM HERO DA PLANTA ===== -->
 
-        fases.forEach(fase => {
-            const fase_planta = document.createElement("div");
-            fase_planta.classList.add("planta-fase");
+  <div class="planta-body">
 
-            fase_planta.innerHTML = `
-                <h2>Fase ${fase.ordem}</h2>
-                <h3>${fase.nome_fase}</h3>
-                <p>${fase.descricao}</p>
-                <p>
-                    <strong>Duração:</strong>
-                    ${fase.duracao_dias} dias
-                </p>
-                <p>
-                    <strong>Dica:</strong>
-                    ${fase.dica_cuidado}
-                </p>
-            
-            `;
+    <!-- CULTIVO -->
+    <div class="planta-secao-titulo">Informações de cultivo</div>
+    <div class="planta-grid-info">
+      <div class="planta-info-card">
+        <div class="planta-info-label">Germinação</div>
+        <div class="planta-info-valor">7 <span class="planta-info-unidade">dias</span></div>
+      </div>
+      <div class="planta-info-card">
+        <div class="planta-info-label">Crescimento</div>
+        <div class="planta-info-valor">60 <span class="planta-info-unidade">dias</span></div>
+      </div>
+      <div class="planta-info-card">
+        <div class="planta-info-label">Colheita</div>
+        <div class="planta-info-valor">90 <span class="planta-info-unidade">dias</span></div>
+      </div>
+      <div class="planta-info-card">
+        <div class="planta-info-label">Água/dia</div>
+        <div class="planta-info-valor">500 <span class="planta-info-unidade">ml</span></div>
+      </div>
+      <div class="planta-info-card">
+        <div class="planta-info-label">Rega</div>
+        <div class="planta-info-valor">1 <span class="planta-info-unidade">x/dia</span></div>
+      </div>
+      <div class="planta-info-card">
+        <div class="planta-info-label">Sol</div>
+        <div class="planta-info-valor">8 <span class="planta-info-unidade">h/dia</span></div>
+      </div>
+    </div>
 
-            fasesContainer.appendChild(fase_planta);
-        });
+    <!-- SOLO E ADUBAÇÃO -->
+    <div class="planta-secao-titulo">Solo, clima e adubação</div>
+    <div class="planta-grid2">
+      <div class="planta-detalhe">
+        <div class="planta-detalhe-titulo">🌍 Solo e Clima</div>
+        <div class="planta-detalhe-linha"><span>Tipo de solo</span><strong>Arenoso / orgânico</strong></div>
+        <div class="planta-detalhe-linha"><span>pH ideal</span><strong>6.5</strong></div>
+        <div class="planta-detalhe-linha"><span>Clima</span><strong>Tropical</strong></div>
+        <div class="planta-detalhe-linha"><span>Temperatura</span><strong>18°C – 30°C</strong></div>
+        <div class="planta-detalhe-linha"><span>Umidade</span><strong>70%</strong></div>
+        <div class="planta-detalhe-linha"><span>Região ideal</span><strong>Sul e Sudeste</strong></div>
+      </div>
+      <div class="planta-detalhe">
+        <div class="planta-detalhe-titulo">🌿 Adubação</div>
+        <div class="planta-detalhe-linha"><span>Adubo</span><strong>NPK 10-10-10</strong></div>
+        <div class="planta-detalhe-linha"><span>Frequência</span><strong>A cada 15 dias</strong></div>
+        <div class="planta-detalhe-linha"><span>Espaçamento</span><strong>50 cm</strong></div>
+        <div class="planta-detalhe-linha"><span>Profundidade</span><strong>2 cm</strong></div>
+      </div>
+    </div>
 
+    <!-- PROBLEMAS -->
+    <div class="planta-secao-titulo">Problemas comuns</div>
+    <div class="planta-alerta">
+      <div class="planta-alerta-titulo">⚠️ Fique atento</div>
+      <div class="planta-alerta-linha">🐛 <strong>Pragas:</strong> Pulgões e mosca-branca</div>
+      <div class="planta-alerta-linha">🍂 <strong>Doenças:</strong> Requeima e murcha bacteriana</div>
+    </div>
 
+    <!-- FASES -->
+    <div class="planta-secao-titulo">Fases de crescimento</div>
+    <div class="planta-fases">
+      <div class="planta-fase">
+        <div class="planta-fase-num">Fase 1</div>
+        <div class="planta-fase-nome">Germinação</div>
+        <div class="planta-fase-desc">A semente absorve água e inicia seu desenvolvimento.</div>
+        <div class="planta-fase-dur">⏱ 7 dias</div>
+        <div class="planta-fase-dica">💧 Mantenha o solo sempre úmido.</div>
+      </div>
+      <div class="planta-fase">
+        <div class="planta-fase-num">Fase 2</div>
+        <div class="planta-fase-nome">Crescimento Vegetativo</div>
+        <div class="planta-fase-desc">Desenvolvimento das folhas e fortalecimento do caule.</div>
+        <div class="planta-fase-dur">⏱ 30 dias</div>
+        <div class="planta-fase-dica">☀️ Garanta bastante incidência solar.</div>
+      </div>
+      <div class="planta-fase">
+        <div class="planta-fase-num">Fase 3</div>
+        <div class="planta-fase-nome">Floração</div>
+        <div class="planta-fase-desc">Surgimento das flores que darão origem aos frutos.</div>
+        <div class="planta-fase-dur">⏱ 20 dias</div>
+        <div class="planta-fase-dica">🚿 Evite excesso de irrigação.</div>
+      </div>
+      <div class="planta-fase">
+        <div class="planta-fase-num">Fase 4</div>
+        <div class="planta-fase-nome">Frutificação</div>
+        <div class="planta-fase-desc">Formação e amadurecimento dos tomates.</div>
+        <div class="planta-fase-dur">⏱ 30 dias</div>
+        <div class="planta-fase-dica">🪴 Faça tutoramento para sustentar os frutos.</div>
+      </div>
+    </div>
 
-        document.body.appendChild(card);
-        document.body.appendChild(fasesContainer);
-       
-});
-    
+  </div>
 
-    
-</script>
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-conteudo">
+      <div class="footer-marca">
+        <span class="footer-logo">AgroWiki</span>
+        <p class="footer-slogan">Sua enciclopédia agrícola gratuita.</p>
+      </div>
+      <div class="footer-links">
+        <h4 class="footer-col-titulo">Navegação</h4>
+        <a href="home.html">Home</a>
+        <a href="home.html#catalogo">Catálogo</a>
+        <a href="cadastro.html">Cadastrar</a>
+        <a href="login.html">Entrar</a>
+      </div>
+      <div class="footer-links">
+        <h4 class="footer-col-titulo">Minha conta</h4>
+        <a href="usuario-progresso.html">Meu Jardim</a>
+        <a href="login.html">Login</a>
+      </div>
+    </div>
+    <div class="footer-rodape">
+      <p>© 2026 AgroWiki — Feito com carinho para o campo brasileiro</p>
+    </div>
+  </footer>
+  <!-- ===== FIM FOOTER ===== -->
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
