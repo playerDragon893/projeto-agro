@@ -37,9 +37,31 @@ if(!filter_var($id_planta, FILTER_VALIDATE_INT)){
 }
 
 //validacao para verificar se usuario ja esta cuidando desta planta
+$sql = "SELECT id FROM progresso_usuario 
+        WHERE
+        id_usuario = :id_usuario
+        AND id_planta = :id_planta
+        AND `status` = 'ativo' 
+        LIMIT 1"; 
+//limit 1 e desnessario mas previne bugs de duplicacao
+$stmt = $conexao->prepare($sql);
+$result = $stmt->execute([
+    ':id_usuario' => $id_usuario_logado,
+    ':id_planta' => $id_planta
+]);
 
 
-$sql = "INSERT progresso_usuario(id_usuario, id_planta, data_inicio_cultivo,`status`)
+if($stmt->fetch(PDO::FETCH_ASSOC)){
+    echo json_encode([
+        'sucesso' => false,
+        'ERR' => "voce ja esta cultivando essa planta"
+    ]);
+    exit;
+}
+
+
+
+$sql = "INSERT INTO progresso_usuario(id_usuario, id_planta, data_inicio_cultivo,`status`)
         VALUES (:id_user, :id_plant, :data_plant, :s)";
 
 $stmt = $conexao->prepare($sql);
@@ -68,7 +90,3 @@ exit;
 
 
 ?>
-
-
-
-
