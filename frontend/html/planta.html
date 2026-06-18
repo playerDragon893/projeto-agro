@@ -1,10 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    
+</body>
+</html>
+
 <script>
+
+async function comecarCultivo(idPlanta, data) {
+    try{
+        const resposta = await fetch(
+           "/projeto-agro/backend/apis-php/criarPlantaProgressoUsuario.php",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id_planta: idPlanta,
+                    data_inicio_cultivo: data
+                })
+            }
+        );
+
+        const resultado = await resposta.json();
+        
+        if(resultado.sucesso){
+            console.log(resultado);
+        }
+        else{
+            console.error(resultado.ERR);
+        }
+    
+    }
+    catch(erro) {
+        console.error(erro);
+        alert("Erro ao iniciar cultivo");
+    }
+}
+
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 console.log(id);
 
 
-fetch(`/backend/apis-php/pagina-planta.php?id=${id}`)
+fetch(`/projeto-agro/backend/apis-php/pagina-planta.php?id=${id}`)
     .then(res => res.json())
     .then(dados => {
         console.log(dados);
@@ -47,9 +93,30 @@ fetch(`/backend/apis-php/pagina-planta.php?id=${id}`)
             <h2>Problemas comuns</h2>
             <p><strong>Pragas:</strong> ${planta.pragas_comuns}</p>
             <p><strong>Doenças:</strong> ${planta.doencas_comuns}</p>
+            
+
             <button id="btn-comecar-cultivo">
                 Começar cultivo
             </button>
+
+            <div id="modal-cultivo" class="modal">
+                <div class="modal-content">
+                    <h2>Iniciar cultivo</h2>
+
+                    <label>Data de plantio:</label>
+                    <input type="date" id="data-plantio">
+
+                    <div class="modal-botoes">
+                        <button id="btn-cancelar">
+                            Cancelar
+                        </button>
+
+                        <button id="btn-confirmar">
+                            Confirmar
+                        </button>
+                    </div>
+                </div>
+            </div>
         `;
         const fasesContainer = document.createElement("div");
         fasesContainer.classList.add("pagina-planta-fase-container");
@@ -80,10 +147,29 @@ fetch(`/backend/apis-php/pagina-planta.php?id=${id}`)
             fasesContainer.appendChild(fase_planta);
         });
 
-
-
         document.body.appendChild(card);
         document.body.appendChild(fasesContainer);
+         //eventos
+         // 
+         const modal = document.getElementById("modal-content");
+
+         document.getElementById("btn-comecar-cultivo")
+            .addEventListener("click", () => {
+            modal.style.display = "flex";
+        });
+
+        document.getElementById("btn-cancelar")
+            .addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+        
+        document.getElementById("btn-confirmar")
+            .addEventListener("click", () => {
+                const data = document.getElementById("data-plantio").value;
+                comecarCultivo(id, data);
+            });
+
+
        
 });
     

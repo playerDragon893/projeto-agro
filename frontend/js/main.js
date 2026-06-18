@@ -1,6 +1,7 @@
 //card
 
-fetch('/backend/apis-php/cardPlanta.php')
+console.log("funciona");
+fetch('/projeto-agro/backend/apis-php/cardPlanta.php')
     .then(resposta => resposta.json())
     .then(dados =>{
         console.log(dados);
