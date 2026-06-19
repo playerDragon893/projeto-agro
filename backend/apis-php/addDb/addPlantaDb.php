@@ -1,9 +1,18 @@
 <?php
 session_start();
+include_once("../conexaodb.php");
+
 if(!isset($_FILES["arquivo"]) || $_FILES["arquivo"]["error"] != 0){
     $_SESSION['ERR'] = "erro ao enviar arquivo";
     exit;
 }
+
+//verificar variaveis
+
+
+
+
+
 
 
 //variaveis da planta 
@@ -44,11 +53,6 @@ $aguas = $_POST["agua_ml_dia"] ?? [];
 $frequencias_rega = $_POST["frequencia_rega_dias"] ?? [];
 $dicas = $_POST["dica_cuidado"] ?? [];
 
-
-
-
-
-
 //envio do arquivo imagem
 
 $arquivo = $_FILES["arquivo"];
@@ -74,11 +78,71 @@ elseif(!in_array($extensao, $extensoesPermitidas)){
     exit; 
 }
 
+
+
+//sql
+//caminho_noBanco e a variavel que vai em imagem ok
+
+
+
+foreach($_POST as $campo => $variavel){
+    if(is_numeric($variavel)){
+        continue;
+    }
+    else if(is_string($variavel)){
+        continue;
+    }
+    else{
+        $_SESSION['ERR'][$campo] = "variavel com tipo de dado invalido";
+        exit;
+    }
+
+}
+
+if(isset($_SESSION['ERR'])){
+    header("Location: ../../../frontend/html/addPlanta-form.php");
+    exit;
+}
+
+//move imagem
 if(move_uploaded_file($arquivo["tmp_name"], $caminho_final)){
     echo "arquivo movido";
 }
 else{
     echo "erro";
 }
+
+var_dump($_POST);
+
+$sql = "INSERT INTO plantas (nome_comum, nome_cientifico, descricao_planta, horas_sol_dia, tipo_solo, ph_solo_ideal, clima_adequado, temperatura_min, 
+temperatura_max, umidade_ideal, regiao_ideal, tipo_adubo, frequencia_adubacao, espacamento_cm, profundidade_plantio_cm, pragas_comuns, doencas_comuns, 
+categoria, imagem) 
+VALUES (:nome_comum, :nome_cientifico, :descricao_planta, :horas_sol_dia, :tipo_solo, :ph_solo_ideal, :clima_adequado, 
+:temperatura_min, :temperatura_max, :umidade_ideal, :regiao_ideal, :tipo_adubo, :frequencia_adubacao, 
+:espacamento_cm, :profundidade_plantio_cm, :pragas_comuns, :doencas_comuns, :categoria, :caminho_noBanco)";
+
+$stmt = $conexao->prepare($sql);
+$stmt->execute([
+    ':nome_comum' => $nome_comum,
+    ':nome_cientifico' => $nome_cientifico,
+    ':descricao_planta' => $descricao_planta,
+    ':horas_sol_dia' => $horas_sol_dia,
+    ':tipo_solo' => $tipo_solo,
+    ':ph_solo_ideal' => $ph_solo_ideal,
+    ':clima_adequado' => $clima_adequado,
+    ':temperatura_min' => $temperatura_min,
+    ':temperatura_max' => $temperatura_max,
+    ':umidade_ideal' => $umidade_ideal,
+    ':regiao_ideal' => $regiao_ideal,
+    ':tipo_adubo' => $tipo_adubo,
+    ':frequencia_adubacao' => $frequencia_adubacao,
+    ':espacamento_cm' => $espacamento_cm,
+    ':profundidade_plantio_cm' => $profundidade_plantio_cm,
+    ':pragas_comuns' => $pragas_comuns,
+    ':doencas_comuns' => $doencas_comuns,
+    ':categoria' => $categoria,
+    ':caminho_noBanco' => $caminho_noBanco
+]);
+
 
 ?>

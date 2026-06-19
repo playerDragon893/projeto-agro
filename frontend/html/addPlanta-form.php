@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,82 +11,220 @@
 </head>
 <body>
     <form method="POST" action="../../backend/apis-php/addDb/addPlantaDb.php" enctype="multipart/form-data">
-       <label>Nome comum</label>
+       
+    
+    <label>Nome comum</label>
     <br>
     <input type="text" name="nome_comum" required>
 
+    <?php if(isset($_SESSION['ERR']['nome_comum'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['nome_comum'] ?>
+        </span>
+    <?php endif; ?>
+
     <br>
+
     <label>Nome científico</label>
     <input type="text" name="nome_cientifico" required>
 
+    <?php if(isset($_SESSION['ERR']['nome_cientifico'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['nome_cientifico'] ?>
+        </span>
+    <?php endif; ?>
+
     <br>
+
     <label>Descrição</label>
-    <textarea name="descricao_planta"></textarea>
+    <textarea name="descricao_planta" required></textarea>
+
+    <?php if(isset($_SESSION['ERR']['descricao_planta'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['descricao_planta'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Horas de sol</label>
-    <input type="number" name="horas_sol_dia">
+    <input type="number" name="horas_sol_dia" required>
+
+    <?php if(isset($_SESSION['ERR']['horas_sol_dia'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['horas_sol_dia'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Tipo de solo</label>
-    <input type="text" name="tipo_solo">
+    <input type="text" name="tipo_solo" required>
+
+    <?php if(isset($_SESSION['ERR']['tipo_solo'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['tipo_solo'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>pH solo ideal</label>
-    <input type="text" name="ph_solo_ideal">
+    <input type="text" name="ph_solo_ideal" required>
+
+    <?php if(isset($_SESSION['ERR']['ph_solo_ideal'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['ph_solo_ideal'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Clima adequado</label>
-    <input type="text" name="clima_adequado">
+    <input type="text" name="clima_adequado" required>
+
+    <?php if(isset($_SESSION['ERR']['clima_adequado'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['clima_adequado'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Temperatura mínima</label>
-    <input type="number" name="temperatura_min">
+    <input type="number" name="temperatura_min" required>
+
+    <?php if(isset($_SESSION['ERR']['temperatura_min'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['temperatura_min'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Temperatura máxima</label>
-    <input type="number" name="temperatura_max">
+    <input type="number" name="temperatura_max" required>
+
+    <?php if(isset($_SESSION['ERR']['temperatura_max'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['temperatura_max'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Umidade ideal</label>
-    <input type="text" name="umidade_ideal">
+    <input type="text" name="umidade_ideal" required>
+
+    <?php if(isset($_SESSION['ERR']['umidade_ideal'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['umidade_ideal'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Região ideal</label>
-    <input type="text" name="regiao_ideal">
+    <input type="text" name="regiao_ideal" required>
+
+    <?php if(isset($_SESSION['ERR']['regiao_ideal'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['regiao_ideal'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Tipo de adubo</label>
-    <input type="text" name="tipo_adubo">
+    <input type="text" name="tipo_adubo" required>
+
+    <?php if(isset($_SESSION['ERR']['tipo_adubo'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['tipo_adubo'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Frequência adubação</label>
-    <input type="text" name="frequencia_adubacao">
+    <input type="text" name="frequencia_adubacao" required>
+
+    <?php if(isset($_SESSION['ERR']['frequencia_adubacao'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['frequencia_adubacao'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Espaçamento cm</label>
-    <input type="text" name="espacamento_cm">
+    <input type="text" name="espacamento_cm" required>
+
+    <?php if(isset($_SESSION['ERR']['espacamento_cm'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['espacamento_cm'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Profundidade plantio cm</label>
-    <input type="number" name="profundidade_plantio_cm">
+    <input type="number" name="profundidade_plantio_cm" required>
+
+    <?php if(isset($_SESSION['ERR']['profundidade_plantio_cm'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['profundidade_plantio_cm'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Pragas comuns</label>
-    <textarea name="pragas_comuns"></textarea>
+    <textarea name="pragas_comuns" required></textarea>
+
+    <?php if(isset($_SESSION['ERR']['pragas_comuns'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['pragas_comuns'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Doenças comuns</label>
-    <textarea name="doencas_comuns"></textarea>
+    <textarea name="doencas_comuns" required></textarea>
+
+    <?php if(isset($_SESSION['ERR']['doencas_comuns'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['doencas_comuns'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
-    <label>enviar imagem</label>
-    <input type="file" name="arquivo">
 
+    <label>Enviar imagem</label>
+    <input type="file" name="arquivo" required>
+
+    <?php if(isset($_SESSION['ERR']['arquivo'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['arquivo'] ?>
+        </span>
+    <?php endif; ?>
 
     <br>
+
     <label>Categoria</label>
-    <select id="categoria-select" name="categoria"></select>
+    <select id="categoria-select" name="categoria" required></select>
+
+    <?php if(isset($_SESSION['ERR']['categoria'])): ?>
+        <span style="color:red">
+            <?= $_SESSION['ERR']['categoria'] ?>
+        </span>
+    <?php endif; ?>
+
+
+    <?php
+    unset($_SESSION['ERR']);
+    ?>
 
 
 
@@ -148,22 +290,22 @@
 
         <br><div>
             <label>Descrição:</label>
-            <textarea name="descricao_fase[]" rows="3"></textarea>
+            <textarea name="descricao_fase[]" rows="3" required></textarea>
         </div>
 
         <br><div>
             <label>Água por dia (ml):</label>
-            <input type="number" name="agua_ml_dia[]" min="0">
+            <input type="number" name="agua_ml_dia[]" min="0" required>
         </div>
 
         <br><div>
             <label>Frequência de Rega (em dias):</label>
-            <input type="number" name="frequencia_rega_dias[]" min="0">
+            <input type="number" name="frequencia_rega_dias[]" min="0" required>
         </div>
 
         <br><div>
             <label>Dica de Cuidado:</label>
-            <textarea name="dica_cuidado[]" rows="3"></textarea>
+            <textarea name="dica_cuidado[]" rows="3" required></textarea>
         </div>
 
 
