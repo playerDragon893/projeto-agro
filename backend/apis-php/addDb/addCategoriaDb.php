@@ -1,11 +1,19 @@
 <?php 
+    
     include '../conexaodb.php';
+    
+    if(empty($_POST['nome'])){
+        echo "nome invalido";
+        exit;
+    }
+    
+    
+    
     $sql = "INSERT INTO categoria(nome, descricao) VALUES (:n, :d)";
-    $stmt
-
-
-
-
-
+    $stmt = $conexao->prepare($sql);
+    $stmt->execute([
+        ':n' => $_POST['nome'],
+        ':d' => $_POST['descricao']
+    ]);
 
 ?>
