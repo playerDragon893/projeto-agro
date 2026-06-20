@@ -1,3 +1,3 @@
 <?php 
-    header("Location: /projeto-agro/views/home.php");
+    header("Location: /views/home.php");
 ?>
