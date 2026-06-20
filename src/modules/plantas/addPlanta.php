@@ -2,10 +2,7 @@
 session_start();
 include_once __DIR__ . '/../../shared/conexaodb.php';
 
-if(!isset($_FILES["arquivo"]) || $_FILES["arquivo"]["error"] != 0){
-    $_SESSION['ERR'] = "erro ao enviar arquivo";
-    exit;
-}
+
 
 //verificar variaveis
 
