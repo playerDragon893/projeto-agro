@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../shared/conexaodb.php';
+include __DIR__ . '/../../shared/conexaodb.php';
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $user_email_ERR = "";
     $user_senha_ERR = "";
