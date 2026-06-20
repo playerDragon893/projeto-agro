@@ -1,0 +1,2006 @@
+/* ============================================================
+   PLANTOU COLHEU — Identidade Visual Light Premium
+   Tema Light inspirado em botânica, agricultura e diários de horta.
+   ============================================================ */
+
+:root {
+    /* Paleta Ecológica Premium */
+    --terra-escura: #2b1f1a;      /* Marrom café profundo para textos principais */
+    --terra-media: #5c4b43;       /* Marrom argila para textos secundários */
+    --terra-suave: #9c8a82;       /* Marrom acinzedado para bordas e desativados */
+    
+    --verde-forte: #1b4d24;       /* Verde floresta para títulos e realces primários */
+    --verde-folha: #2f7a3d;       /* Verde folha padrão da marca */
+    --verde-folha-escuro: #163f1e;/* Verde escuro denso para hovers intensos */
+    --verde-folha-vivo: #34a853;  /* Verde ativo vibrante para badges e interações */
+    --verde-claro: #c2e7c9;       /* Verde pastel suave para bordas decorativas */
+    --verde-fundo: #f0f7f1;       /* Fundo verde sutil para seções e cards */
+    
+    --creme: #f9f8f4;             /* Fundo geral quente (sensação de papel artesanal) */
+    --branco-quente: #ffffff;     /* Fundo de cards, navbars e modais */
+    
+    --alerta: #d95b3f;            /* Terracota/Argila para avisos e pendências */
+    --alerta-fundo: #fdf5f3;      /* Terracota suave para backgrounds de alerta */
+    --alerta-borda: #f7dcd6;
+    
+    /* Tipografia */
+    --fonte-display: 'Fraunces', 'Playfair Display', serif;
+    --fonte-corpo: 'Inter', -apple-system, sans-serif;
+    
+    /* Border Radius */
+    --raio-pequeno: 8px;
+    --raio: 16px;
+    --raio-grande: 28px;
+    
+    /* Layout */
+    --container-max: 1180px;
+    
+    /* Sombras e Elevações */
+    --sombra-card: 0 4px 20px rgba(43, 31, 26, 0.03), 0 2px 8px rgba(43, 31, 26, 0.02);
+    --sombra-card-hover: 0 20px 40px rgba(27, 77, 36, 0.08), 0 6px 16px rgba(27, 77, 36, 0.03);
+    --sombra-nav: 0 4px 30px rgba(43, 31, 26, 0.02);
+    --sombra-modal: 0 24px 64px rgba(43, 31, 26, 0.15);
+    
+    --transicao: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================
+   RESET & CONFIGURAÇÕES GERAIS
+   ============================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--creme);
+    color: var(--terra-escura);
+    font-family: var(--fonte-corpo);
+    line-height: 1.6;
+}
+
+/* Elementos Decorativos de Fundo */
+.bg-decoration {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.45;
+}
+
+.bg-blob-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(163, 231, 201, 0.4), transparent 70%);
+    top: -200px;
+    right: -100px;
+}
+
+.bg-blob-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(240, 247, 241, 0.8), transparent 70%);
+    bottom: 10%;
+    left: -150px;
+}
+
+.bg-blob-3 {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(217, 91, 63, 0.04), transparent 70%);
+    top: 40%;
+    right: 15%;
+}
+
+/* Títulos */
+h1, h2, h3, h4 {
+    font-family: var(--fonte-display);
+    color: var(--verde-forte);
+    font-weight: 700;
+}
+
+a {
+    color: var(--verde-folha);
+    text-decoration: none;
+    transition: var(--transicao);
+}
+
+a:hover {
+    color: var(--verde-folha-escuro);
+}
+
+/* Foco */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--verde-folha-vivo);
+    outline-offset: 3px;
+}
+
+/* Botões */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0.85rem 1.8rem;
+    border-radius: var(--raio-pequeno);
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: var(--fonte-corpo);
+    cursor: pointer;
+    border: none;
+    transition: var(--transicao);
+}
+
+.btn-primary {
+    background-color: var(--verde-folha);
+    color: var(--branco-quente);
+    box-shadow: 0 4px 14px rgba(47, 122, 61, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--verde-folha-escuro);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(47, 122, 61, 0.35);
+}
+
+.btn-secondary {
+    background-color: var(--branco-quente);
+    color: var(--terra-escura);
+    border: 2px solid var(--verde-claro);
+    box-shadow: 0 2px 6px rgba(43, 31, 26, 0.02);
+}
+
+.btn-secondary:hover {
+    border-color: var(--verde-folha-vivo);
+    background-color: var(--verde-fundo);
+    transform: translateY(-2px);
+}
+
+.btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s ease;
+}
+
+.btn:hover svg {
+    transform: translateX(2px);
+}
+
+/* ============================================
+   NAVBAR (Navegação superior)
+   ============================================ */
+
+#navbar {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(47, 122, 61, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: var(--transicao);
+}
+
+#navbar.scrolled {
+    background-color: var(--branco-quente);
+    box-shadow: var(--sombra-nav);
+}
+
+.nav-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 2rem;
+}
+
+.nav-logo {
+    font-family: var(--fonte-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--verde-forte);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.logo-accent {
+    color: var(--verde-folha-vivo);
+}
+
+.logo-icon {
+    font-size: 1.6rem;
+    transition: transform 0.4s ease;
+}
+
+.nav-logo:hover .logo-icon {
+    transform: rotate(-15deg) scale(1.1);
+}
+
+/* Mobile Hamburguer */
+#btn-hamburguer, .nav-mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 110;
+}
+
+#btn-hamburguer span, .nav-mobile-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--verde-forte);
+    border-radius: 2px;
+    transition: var(--transicao);
+}
+
+/* Hamburguer Actived */
+#btn-hamburguer.ativo span:nth-child(1), .nav-mobile-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+#btn-hamburguer.ativo span:nth-child(2), .nav-mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+#btn-hamburguer.ativo span:nth-child(3), .nav-mobile-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Nav Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--terra-media);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--verde-folha-vivo);
+    transition: var(--transicao);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--verde-forte);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+/* Seção de Usuário no Header */
+.nav-usuario {
+    display: flex;
+    align-items: center;
+}
+
+#nav-nao-logado {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.btn-login {
+    color: var(--terra-media);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.btn-login:hover {
+    color: var(--verde-forte);
+}
+
+.btn-cadastrar {
+    background-color: var(--verde-folha);
+    color: var(--branco-quente) !important;
+    padding: 0.55rem 1.3rem;
+    border-radius: var(--raio-pequeno);
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(47, 122, 61, 0.15);
+}
+
+.btn-cadastrar:hover {
+    background-color: var(--verde-folha-escuro);
+    transform: translateY(-1px);
+}
+
+#nav-logado {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.btn-jardim {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--terra-media);
+    border: 1px solid var(--verde-claro);
+    padding: 0.45rem 1rem;
+    border-radius: 99px;
+    background-color: var(--verde-fundo);
+}
+
+.btn-jardim:hover {
+    background-color: var(--verde-claro);
+    color: var(--verde-forte);
+}
+
+/* User Dropdown */
+.nav-dropdown {
+    position: relative;
+}
+
+#btn-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.35rem 0.8rem 0.35rem 0.35rem;
+    border-radius: 999px;
+    font-family: var(--fonte-corpo);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--terra-escura);
+    transition: var(--transicao);
+    border: 1px solid rgba(43, 31, 26, 0.08);
+}
+
+#btn-dropdown:hover {
+    background-color: var(--verde-fundo);
+    border-color: var(--verde-claro);
+}
+
+.nav-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--verde-folha);
+    color: var(--branco-quente);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.dropdown-arrow {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+}
+
+.nav-dropdown.aberto .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+#dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background-color: var(--branco-quente);
+    border: 1px solid rgba(43, 31, 26, 0.08);
+    border-radius: var(--raio-pequeno);
+    box-shadow: var(--sombra-card-hover);
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem;
+    min-width: 160px;
+    z-index: 20;
+    animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-dropdown.aberto #dropdown-menu {
+    display: block;
+}
+
+#dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--terra-escura);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#dropdown-menu li a:hover {
+    background-color: var(--verde-fundo);
+    color: var(--verde-forte);
+}
+
+#dropdown-menu li a svg {
+    width: 16px;
+    height: 16px;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 4rem;
+}
+
+.hero-content {
+    max-width: 680px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--verde-fundo);
+    color: var(--verde-forte);
+    border: 1px solid var(--verde-claro);
+    padding: 0.45rem 1.1rem;
+    border-radius: 99px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+    color: var(--verde-forte);
+}
+
+.hero-highlight {
+    color: var(--verde-folha);
+    position: relative;
+    display: inline-block;
+}
+
+.hero-highlight::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: rgba(52, 168, 83, 0.15);
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--terra-media);
+    line-height: 1.65;
+    margin-bottom: 2.2rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-bottom: 3.5rem;
+}
+
+/* Stats */
+.hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-number {
+    font-family: var(--fonte-display);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--verde-forte);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--terra-media);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 42px;
+    background-color: var(--verde-claro);
+}
+
+/* Hero Visuals */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero-plant-circle {
+    width: 320px;
+    height: 320px;
+    background: linear-gradient(135deg, var(--verde-fundo), var(--branco-quente));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--sombra-card-hover);
+    position: relative;
+}
+
+.hero-emoji {
+    font-size: 7.5rem;
+    z-index: 2;
+    filter: drop-shadow(0 12px 24px rgba(47, 122, 61, 0.15));
+    animation: plantFloat 6s ease-in-out infinite;
+}
+
+.circle-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed var(--verde-claro);
+    animation: rotateRing 30s linear infinite;
+}
+
+.ring-1 { width: 360px; height: 360px; animation-duration: 25s; }
+.ring-2 { width: 410px; height: 410px; animation-direction: reverse; animation-duration: 35s; }
+.ring-3 { width: 460px; height: 460px; opacity: 0.5; }
+
+@keyframes plantFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes rotateRing {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   SEÇÕES COMPARTILHADAS (Cabeçalho)
+   ============================================ */
+
+.section-weather,
+.secao-clima,
+.section-catalog,
+.secao-catalogo,
+.section-alerts,
+.secao-alertas {
+    max-width: var(--container-max);
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.section-header, .secao-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 3rem;
+}
+
+.section-badge, .secao-badge {
+    display: inline-block;
+    background-color: var(--verde-fundo);
+    color: var(--verde-folha);
+    border: 1px solid var(--verde-claro);
+    padding: 0.35rem 1rem;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+}
+
+.section-title, .secao-titulo {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    color: var(--verde-forte);
+    margin-bottom: 0.6rem;
+}
+
+.section-subtitle, .secao-subtitulo {
+    color: var(--terra-media);
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+/* ============================================
+   PREVISÃO DO TEMPO
+   ============================================ */
+
+.weather-container {
+    background-color: var(--branco-quente);
+    border-radius: var(--raio-grande);
+    padding: 2.2rem;
+    box-shadow: var(--sombra-card);
+    border: 1px solid rgba(47, 122, 61, 0.06);
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.clima-atual {
+    background: linear-gradient(135deg, var(--verde-fundo) 0%, #edf9f0 100%);
+    border-radius: var(--raio);
+    padding: 1.8rem;
+    text-align: center;
+    border: 1px solid rgba(47, 122, 61, 0.12);
+}
+
+.clima-atual h2 {
+    font-size: 3.2rem;
+    color: var(--verde-forte);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+}
+
+.clima-atual p {
+    color: var(--terra-media);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+}
+
+.clima-atual p:last-of-type {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--verde-folha);
+    background-color: var(--branco-quente);
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    border: 1px solid var(--verde-claro);
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+/* Previsão de dias */
+.previsao-dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.85rem;
+}
+
+.dia-previsao {
+    text-align: center;
+    background-color: var(--creme);
+    border-radius: var(--raio-pequeno);
+    padding: 1.1rem 0.6rem;
+    border: 1px solid rgba(43, 31, 26, 0.03);
+    transition: var(--transicao);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 140px;
+}
+
+.dia-previsao:hover {
+    transform: translateY(-4px);
+    background-color: var(--branco-quente);
+    box-shadow: var(--sombra-card);
+    border-color: var(--verde-claro);
+}
+
+.data-dia {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--terra-escura);
+    text-transform: capitalize;
+}
+
+.condicao-dia {
+    font-size: 0.78rem;
+    color: var(--terra-media);
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0.5rem 0;
+    min-height: 2.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.temp-dia {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--verde-forte);
+}
+
+.weather-loading, .catalog-loading {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: var(--terra-media);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--verde-fundo);
+    border-top: 4px solid var(--verde-folha);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ============================================
+   CATÁLOGO DE PLANTAS
+   ============================================ */
+
+.catalog-grid, .catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.card-planta {
+    background-color: var(--branco-quente);
+    border-radius: var(--raio);
+    overflow: hidden;
+    box-shadow: var(--sombra-card);
+    transition: var(--transicao);
+    border: 1px solid rgba(43, 31, 26, 0.04);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-planta:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--sombra-card-hover);
+    border-color: var(--verde-claro);
+}
+
+/* Imagem do card */
+.card-planta img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background-color: var(--verde-fundo);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-planta:hover img {
+    transform: scale(1.06);
+}
+
+.card-planta h2 {
+    font-size: 1.25rem;
+    margin: 1.5rem 1.5rem 0.5rem 1.5rem;
+    color: var(--verde-forte);
+    line-height: 1.3;
+}
+
+.card-planta p {
+    font-size: 0.9rem;
+    color: var(--terra-media);
+    margin: 0 1.5rem 1.5rem 1.5rem;
+    line-height: 1.5;
+    flex: 1;
+    display: -webkit-box;
+    
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Link para ver detalhes */
+.card-planta a {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--verde-folha);
+    border-bottom: 2px solid var(--verde-claro);
+    padding-bottom: 2px;
+    margin: 0 1.5rem 1.5rem 1.5rem;
+    transition: var(--transicao);
+}
+
+.card-planta a:hover {
+    color: var(--verde-forte);
+    border-bottom-color: var(--verde-folha-vivo);
+    gap: 10px;
+}
+
+/* Status Cultivo (usado no jardim) */
+.card-planta p.status-cultivo,
+.card-planta p:last-of-type {
+    font-weight: 600;
+    color: var(--verde-folha-escuro);
+    margin-bottom: 0.4rem;
+}
+
+/* Aviso de login no Jardim */
+.aviso-login {
+    grid-column: 1 / -1;
+    text-align: center;
+    background-color: var(--branco-quente);
+    border: 2px dashed var(--verde-claro);
+    border-radius: var(--raio);
+    padding: 4rem 2rem;
+    box-shadow: var(--sombra-card);
+}
+
+.aviso-login h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.6rem;
+    color: var(--verde-forte);
+}
+
+.aviso-login p {
+    color: var(--terra-media);
+    margin-bottom: 1.8rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================
+   ALERTAS
+   ============================================ */
+
+.alerts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.2rem;
+}
+
+.alerta-item {
+    display: block;
+    background-color: var(--alerta-fundo);
+    border: 1px solid var(--alerta-borda);
+    border-left: 5px solid var(--alerta);
+    border-radius: var(--raio-pequeno);
+    padding: 1.2rem 1.5rem;
+    text-decoration: none;
+    color: var(--terra-escura);
+    transition: var(--transicao);
+    box-shadow: 0 4px 12px rgba(217, 91, 63, 0.02);
+}
+
+.alerta-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(217, 91, 63, 0.06);
+    border-color: var(--alerta);
+}
+
+.alerta-item strong {
+    font-family: var(--fonte-display);
+    font-size: 1.15rem;
+    color: var(--terra-escura);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.alerta-item ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    font-size: 0.9rem;
+    color: var(--terra-media);
+    list-style-type: none;
+}
+
+.alerta-item li {
+    margin-bottom: 0.35rem;
+    position: relative;
+    font-weight: 500;
+}
+
+.alerta-item li:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================================
+   PÁGINA: MEU JARDIM
+   ============================================ */
+
+body > h1 {
+    max-width: var(--container-max);
+    margin: 3.5rem auto 0;
+    padding: 0 2rem;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--verde-forte);
+    position: relative;
+}
+
+#lista-plantas {
+    max-width: var(--container-max);
+    margin: 2rem auto 4rem;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+#lista-plantas .card-planta h3 {
+    font-size: 1.2rem;
+    font-family: var(--fonte-display);
+    color: var(--verde-forte);
+    margin-bottom: 0.4rem;
+}
+
+/* Badge de status do cultivo (Meu Jardim) */
+#lista-plantas .card-planta p:last-of-type {
+    display: inline-flex;
+    align-self: flex-start;
+    margin: 0.8rem 0 0;
+    padding: 0.3rem 0.85rem;
+    background-color: var(--verde-fundo);
+    color: var(--verde-folha);
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    border: 1px solid var(--verde-claro);
+}
+
+body > button[onclick*="history.back"] {
+    display: block;
+    margin: 2rem auto 4rem;
+    background-color: var(--branco-quente);
+    border: 2px solid var(--verde-claro);
+    color: var(--terra-escura);
+    padding: 0.75rem 1.6rem;
+    border-radius: var(--raio-pequeno);
+    font-family: var(--fonte-corpo);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transicao);
+    box-shadow: var(--sombra-card);
+}
+
+body > button[onclick*="history.back"]:hover {
+    border-color: var(--verde-folha-vivo);
+    background-color: var(--verde-fundo);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   PÁGINA: DETALHE DA PLANTA
+   ============================================ */
+
+.pagina-planta-card {
+    max-width: 900px;
+    margin: 3.5rem auto 0;
+    padding: 3rem;
+    background-color: var(--branco-quente);
+    border-radius: var(--raio-grande);
+    box-shadow: var(--sombra-card);
+    border: 1px solid rgba(47, 122, 61, 0.05);
+}
+
+/* Cabeçalho da página de planta */
+.planta-header-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: center;
+}
+
+.planta-title-block h1 {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--verde-forte);
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+}
+
+.planta-title-block h3 {
+    font-family: var(--fonte-corpo);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--terra-media);
+    font-size: 1.15rem;
+    margin-bottom: 1.2rem;
+}
+
+.planta-descricao {
+    color: var(--terra-media);
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+.planta-image-block {
+    position: relative;
+    border-radius: var(--raio);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(27, 77, 36, 0.08);
+    aspect-ratio: 1 / 1;
+    background-color: var(--verde-fundo);
+}
+
+.planta-image-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.planta-divider {
+    border: none;
+    border-top: 1px dashed rgba(47, 122, 61, 0.15);
+    margin: 2.2rem 0;
+}
+
+/* Grade de Especificações Técnicas */
+.planta-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.2rem;
+}
+
+.spec-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--creme);
+    padding: 1rem 1.2rem;
+    border-radius: var(--raio);
+    border: 1px solid rgba(43, 31, 26, 0.03);
+    transition: var(--transicao);
+}
+
+.spec-card:hover {
+    transform: translateY(-2px);
+    background-color: var(--verde-fundo);
+    border-color: var(--verde-claro);
+}
+
+.spec-icon {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: var(--branco-quente);
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.spec-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.spec-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--terra-media);
+    letter-spacing: 0.04em;
+}
+
+.spec-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--verde-forte);
+}
+
+/* Seção de Problemas */
+.planta-problems-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    color: var(--verde-forte);
+}
+
+.problems-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.problem-card {
+    padding: 1.2rem 1.5rem;
+    border-radius: var(--raio);
+    background-color: var(--creme);
+    border-left: 4px solid var(--terra-suave);
+}
+
+.problem-card.pest {
+    border-left-color: var(--alerta);
+    background-color: var(--alerta-fundo);
+}
+
+.problem-card.disease {
+    border-left-color: #e2a03f;
+    background-color: #fefaf2;
+}
+
+.problem-card strong {
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--terra-escura);
+}
+
+.problem-card p {
+    font-size: 0.9rem;
+    color: var(--terra-media);
+    margin: 0;
+}
+
+/* Área de Ações */
+.planta-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+#btn-comecar-cultivo {
+    background-color: var(--verde-folha);
+    color: var(--branco-quente);
+    border: none;
+    padding: 0.9rem 2.2rem;
+    border-radius: var(--raio-pequeno);
+    font-family: var(--fonte-corpo);
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(47, 122, 61, 0.25);
+    transition: var(--transicao);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#btn-comecar-cultivo:hover {
+    background-color: var(--verde-folha-escuro);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(47, 122, 61, 0.38);
+}
+
+/* ============================================
+   MODAL DIALOG
+   ============================================ */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(43, 31, 26, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: var(--branco-quente);
+    border-radius: var(--raio);
+    padding: 2.5rem;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: var(--sombra-modal);
+    border: 1px solid rgba(47, 122, 61, 0.05);
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+    color: var(--verde-forte);
+}
+
+.modal-subtitle {
+    font-size: 0.9rem;
+    color: var(--terra-media);
+    margin-bottom: 1.5rem;
+    line-height: 1.45;
+}
+
+.modal-content label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--terra-media);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.modal-content input[type="date"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--verde-claro);
+    border-radius: var(--raio-pequeno);
+    font-family: var(--fonte-corpo);
+    font-size: 1rem;
+    color: var(--terra-escura);
+    margin-bottom: 2rem;
+    background-color: var(--creme);
+    transition: var(--transicao);
+}
+
+.modal-content input[type="date"]:focus {
+    outline: none;
+    border-color: var(--verde-folha-vivo);
+    background-color: var(--branco-quente);
+    box-shadow: 0 0 0 4px rgba(52, 168, 83, 0.1);
+}
+
+.modal-botoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.modal-botoes .btn {
+    padding: 0.75rem 1.4rem;
+}
+
+/* ============================================
+   FASES DE CULTIVO (Timeline)
+   ============================================ */
+
+.fases-secao-titulo {
+    max-width: 900px;
+    margin: 4rem auto 1.5rem;
+    font-size: 1.6rem;
+    color: var(--verde-forte);
+}
+
+.pagina-planta-fase-container {
+    max-width: 900px;
+    margin: 0 auto 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+
+/* Linha da timeline conectando as fases */
+.pagina-planta-fase-container::before {
+    content: "";
+    position: absolute;
+    top: 2rem;
+    bottom: 2rem;
+    left: 28px;
+    width: 4px;
+    background-color: var(--verde-claro);
+    z-index: 1;
+}
+
+.planta-fase {
+    position: relative;
+    background-color: var(--branco-quente);
+    border-radius: var(--raio);
+    padding: 2rem 2.2rem;
+    box-shadow: var(--sombra-card);
+    border: 1px solid rgba(47, 122, 61, 0.05);
+    margin-left: 70px;
+    z-index: 2;
+    transition: var(--transicao);
+}
+
+.planta-fase:hover {
+    transform: translateX(6px);
+    box-shadow: var(--sombra-card-hover);
+    border-color: var(--verde-claro);
+}
+
+/* Badge circular com o número da fase na timeline */
+.fase-badge-number {
+    position: absolute;
+    top: 2rem;
+    left: -70px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--verde-folha);
+    color: var(--branco-quente);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--fonte-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    box-shadow: 0 4px 10px rgba(47, 122, 61, 0.2);
+    z-index: 3;
+    border: 4px solid var(--creme);
+    transition: var(--transicao);
+}
+
+.planta-fase:hover .fase-badge-number {
+    background-color: var(--verde-folha-vivo);
+    transform: scale(1.08);
+}
+
+.fase-header {
+    margin-bottom: 0.8rem;
+}
+
+.fase-header h2 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--verde-folha);
+    margin-bottom: 0.2rem;
+}
+
+.fase-header h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--terra-escura);
+}
+
+.fase-desc {
+    font-size: 1rem;
+    color: var(--terra-media);
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+.fase-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(47, 122, 61, 0.06);
+    font-size: 0.92rem;
+}
+
+.fase-duracao {
+    color: var(--terra-escura);
+    background-color: var(--creme);
+    padding: 0.35rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.fase-dica {
+    color: var(--verde-forte);
+    background-color: var(--verde-fundo);
+    padding: 0.35rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 500;
+    flex: 1;
+}
+
+.planta-fase img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: var(--raio-pequeno);
+    margin-top: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+/* ============================================
+   FOOTER (Rodapé)
+   ============================================ */
+
+.site-footer {
+    background-color: var(--verde-forte);
+    color: var(--verde-fundo);
+    padding: 4.5rem 2rem 2rem;
+    margin-top: 6rem;
+    border-top: 4px solid var(--verde-folha);
+}
+
+.footer-content {
+    max-width: var(--container-max);
+    margin: 0 auto 3rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.footer-brand {
+    max-width: 380px;
+}
+
+.footer-logo {
+    font-family: var(--fonte-display);
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: var(--branco-quente);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(240, 247, 241, 0.7);
+}
+
+.footer-links {
+    display: flex;
+    gap: 4rem;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.footer-col h4 {
+    color: var(--branco-quente);
+    font-family: var(--fonte-corpo);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.footer-col a {
+    color: rgba(240, 247, 241, 0.7);
+    font-size: 0.95rem;
+}
+
+.footer-col a:hover {
+    color: var(--branco-quente);
+    transform: translateX(3px);
+}
+
+.footer-bottom {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding-top: 1.8rem;
+    border-top: 1px solid rgba(240, 247, 241, 0.1);
+    text-align: center;
+    font-size: 0.88rem;
+    color: rgba(240, 247, 241, 0.5);
+}
+
+/* ============================================
+   RESPONSIVIDADE (MOBILE & TABLET)
+   ============================================ */
+
+@media (max-width: 992px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+        padding: 4rem 2rem;
+    }
+
+    .hero-content {
+        margin: 0 auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .weather-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .clima-atual {
+        max-width: 320px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .previsao-dias {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .planta-header-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .planta-image-block {
+        max-width: 320px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #btn-hamburguer, .nav-mobile-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: var(--branco-quente);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 6rem 2rem 2rem;
+        gap: 1.5rem;
+        transition: var(--transicao);
+        z-index: 105;
+    }
+
+    .nav-links.aberto, .nav-links.open {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        width: 100%;
+    }
+
+    .nav-usuario {
+        margin-right: 1rem;
+    }
+
+    .hero,
+    .section-weather,
+    .secao-clima,
+    .section-catalog,
+    .secao-catalogo,
+    .section-alerts,
+    .secao-alertas,
+    body > h1,
+    #lista-plantas {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+    }
+
+    .problems-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pagina-planta-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Ajuste da timeline no mobile */
+    .pagina-planta-fase-container::before {
+        left: 20px;
+    }
+
+    .planta-fase {
+        margin-left: 50px;
+        padding: 1.5rem;
+    }
+
+    .fase-badge-number {
+        left: -50px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+        top: 1.5rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .footer-links {
+        gap: 3rem;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .stat-divider {
+        width: 60px;
+        height: 1px;
+    }
+
+    .previsao-dias {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #nav-nao-logado {
+        gap: 0.6rem;
+    }
+    
+    .btn-login {
+        font-size: 0.85rem;
+    }
+
+    .btn-cadastrar {
+        font-size: 0.85rem;
+        padding: 0.45rem 0.9rem;
+    }
+
+    .planta-actions {
+        flex-direction: column-reverse;
+    }
+
+    .planta-actions .btn {
+        width: 100%;
+    }
+
+    .fase-details {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+}
+
+/* ==========================================
+   JARDIM
+   ========================================== */
+
+#lista-plantas {
+    max-width: var(--container-max);
+    margin: 2rem auto 4rem;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+#lista-plantas .card-planta {
+    background: var(--branco-quente);
+    border-radius: var(--raio);
+    overflow: hidden;
+    box-shadow: var(--sombra-card);
+    border: 1px solid rgba(47,122,61,.08);
+
+    display: flex;
+    flex-direction: column;
+
+    transition: var(--transicao);
+}
+
+#lista-plantas .card-planta:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--sombra-card-hover);
+}
+
+#lista-plantas .card-planta img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+#lista-plantas .card-planta h3 {
+    padding: 1rem 1.2rem .4rem;
+    margin: 0;
+
+    font-size: 1.3rem;
+    color: var(--verde-forte);
+}
+
+#lista-plantas .card-planta p {
+    padding: 0 1.2rem;
+    margin: 0;
+}
+
+#lista-plantas .card-planta p:first-of-type {
+    color: var(--terra-media);
+}
+
+#lista-plantas .card-planta p:last-of-type {
+    margin: 1rem 1.2rem 1.2rem;
+    width: fit-content;
+
+    background: var(--verde-fundo);
+    color: var(--verde-forte);
+
+    border: 1px solid var(--verde-claro);
+    border-radius: 999px;
+
+    padding: .4rem .9rem;
+
+    font-size: .85rem;
+    font-weight: 700;
+}
+
+#lista-plantas .card-planta::after {
+    content: "Ver cultivo →";
+
+    margin: auto 1.2rem 1.2rem;
+    color: var(--verde-folha);
+
+    font-weight: 700;
+    font-size: .9rem;
+}
+
+.aviso-login {
+    max-width: 700px;
+    margin: 3rem auto;
+
+    background: var(--branco-quente);
+    border-radius: var(--raio);
+
+    padding: 3rem;
+    text-align: center;
+
+    box-shadow: var(--sombra-card);
+}
+
+.aviso-login a {
+    display: inline-block;
+
+    margin-top: 1rem;
+    padding: .8rem 1.5rem;
+
+    background: var(--verde-folha);
+    color: white;
+
+    border-radius: var(--raio-pequeno);
+    font-weight: 700;
+}
+
+.aviso-login a:hover {
+    background: var(--verde-folha-escuro);
+}
+body > h1 {
+    max-width: var(--container-max);
+    margin: 3rem auto 1rem;
+    padding: 0 2rem;
+
+    font-size: 2.8rem;
+    color: var(--verde-forte);
+
+    text-align: center;
+}
+
+/* ============================================
+   PÁGINA PLANTA DO USUÁRIO
+   ============================================ */
+
+.planta-user-card,
+.fase-atual-card,
+.registro-card {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: var(--branco-quente);
+    border-radius: var(--raio-grande);
+    padding: 2.5rem;
+    box-shadow: var(--sombra-card);
+    border: 1px solid rgba(47, 122, 61, 0.05);
+}
+
+.planta-user-header h1 {
+    font-size: 2.5rem;
+    color: var(--verde-forte);
+    margin-bottom: .3rem;
+}
+
+.planta-user-header h3 {
+    font-style: italic;
+    color: var(--terra-media);
+    margin-bottom: 1rem;
+}
+
+.planta-user-desc {
+    color: var(--terra-media);
+    line-height: 1.7;
+}
+
+.planta-user-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 1rem;
+}
+
+.fase-atual-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.fase-atual-header h2 {
+    margin: 0;
+}
+
+.fase-badge {
+    background: var(--verde-fundo);
+    color: var(--verde-forte);
+    padding: .5rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--verde-claro);
+    font-weight: 700;
+}
+
+.fase-dica-box {
+    margin-top: 1.5rem;
+    background: var(--verde-fundo);
+    border-left: 5px solid var(--verde-folha);
+    padding: 1rem 1.2rem;
+    border-radius: var(--raio-pequeno);
+    color: var(--verde-forte);
+    font-weight: 500;
+}
+
+/* ============================================
+   REGISTRO DE CUIDADOS
+   ============================================ */
+
+.cuidados-container {
+    max-width: 900px;
+    margin: 2rem auto 4rem;
+    background: var(--branco-quente);
+    border-radius: var(--raio-grande);
+    padding: 2rem;
+    box-shadow: var(--sombra-card);
+}
+
+.cuidados-container h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+#observacao {
+    width: 100%;
+    min-height: 140px;
+    resize: vertical;
+    padding: 1rem;
+    border: 2px solid var(--verde-claro);
+    border-radius: var(--raio);
+    font-family: var(--fonte-corpo);
+    margin-bottom: 1.5rem;
+}
+
+#observacao:focus {
+    border-color: var(--verde-folha-vivo);
+    outline: none;
+}
+
+.acoes-cuidado {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#btn-rega,
+#btn-adubo,
+#btn-poda {
+    flex: 1;
+    min-width: 180px;
+    padding: 1rem;
+    border: none;
+    border-radius: var(--raio-pequeno);
+    background: var(--verde-folha);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+#btn-rega:hover,
+#btn-adubo:hover,
+#btn-poda:hover {
+    background: var(--verde-folha-escuro);
+    transform: translateY(-2px);
+}
+
+#btn-rega:disabled,
+#btn-adubo:disabled,
+#btn-poda:disabled {
+    background: #b8c7ba;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#mensagem-status {
+    max-width: 900px;
+    margin: 1rem auto;
+    text-align: center;
+    font-weight: 700;
+    color: var(--verde-forte);
+}

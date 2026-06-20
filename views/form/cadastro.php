@@ -107,8 +107,9 @@
         <button type="submit">
             Cadastrar
         </button>
-            <a href="../home.php">Voltar</a>
+            <button onclick="window.history.back()">← Voltar</button>
             <a href="login.php">Login</a>
     </form>
+
 </body>
 </html>

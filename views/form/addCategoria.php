@@ -78,5 +78,6 @@
     </form>
 
 <div id="mensagem"></div>
+<button onclick="window.history.back()">← Voltar</button>
 </body>
 </html>

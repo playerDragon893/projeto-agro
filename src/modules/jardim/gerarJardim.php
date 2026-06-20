@@ -1,37 +1,19 @@
 <?php
     session_start();
-    include '../../shared/conexaodb.php'; 
+    include __DIR__ . '/../../shared/conexaodb.php';
     $id_user = $_SESSION['id'];
 
 
 
-    $sql = "SELECT id_planta, `status` FROM progresso_usuario WHERE id_usuario = :id";
+    $sql = "SELECT progresso_usuario.id AS id_progresso, plantas.nome_comum, plantas.imagem_url, progresso_usuario.status FROM progresso_usuario 
+    INNER JOIN plantas ON plantas.id = progresso_usuario.id_planta
+    WHERE id_usuario = :id";
     $stmt = $conexao->prepare($sql);
     $stmt->execute([
         ':id' => $id_user
     ]);
-    $dados_id_status = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $idPlanta = $dados_id_status['id_planta'];
-    $status = $dados_id_status['status'];
-    
-    
-    
-    $sql = "SELECT nome_comum, imagem_url FROM plantas WHERE id = :id";
-    $stmt = $conexao->prepare($sql);
-    $stmt->execute([
-        ':id' => $idPlanta
-    ]);
-    $dados_nome_imagem = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $nomePlanta = $dados_nome_imagem['nome_comum'];
-    $imagem = $dados_nome_imagem['imagem_url'];
-
-    $resposta = [
-        $nomePlanta,
-        $status,
-        $imagem
-    ];
-
-
+    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   
     header('Content-Type: application/json ');
-    echo json_encode($resposta);
+    echo json_encode($dados);
 ?>

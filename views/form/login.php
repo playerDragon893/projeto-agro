@@ -43,13 +43,13 @@
         
         <div>
             <label>
-                <input type="checkbox" name="lembrar">
+                <input type="checkbox" name="manter">
                 Lembrar de mim
             </label>
         </div>
 
         <button type="submit">Entrar</button>
-         <a href="../home.php">Voltar</a>
+         <button onclick="window.history.back()">← Voltar</button>
          <a href="cadastro.php">cadastrar</a>
     </form>
 </body>

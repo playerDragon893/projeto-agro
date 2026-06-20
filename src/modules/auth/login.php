@@ -41,6 +41,35 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION['nome'] = $userdb['nome'];
         $_SESSION['email'] = $userdb['email'];
         
+
+
+        if(isset($_POST['manter'])){
+
+
+        $token = bin2hex(random_bytes(32));
+
+
+        $sql = "UPDATE usuarios 
+                SET token_login = :token
+                WHERE id = :id";
+
+        $stmt = $conexao->prepare($sql);
+
+        $stmt->execute([
+            ":token" => $token,
+            ":id" => $userdb['id']
+        ]);
+
+
+        setcookie(
+            "login_token",
+            $token,
+            time() + (60 * 60 * 24 * 30),
+            "/"
+        );
+
+        }
+
         header("Location: ../../../views/home.php");
         exit;
 }

@@ -324,7 +324,7 @@ span{
         <button type="submit">Cadastrar</button>
         
     </form>
-
+    <button onclick="window.history.back()">← Voltar</button>
 </body>
 </html>
 

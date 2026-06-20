@@ -1,6 +1,6 @@
 <?php 
     include __DIR__ . '/../../shared/conexaodb.php';
-    $sql = "SELECT id, nome_comum, descricao FROM plantas";
+    $sql = "SELECT id, nome_comum, descricao, imagem_url FROM plantas";
 
     $stmt = $conexao->query($sql);
 
