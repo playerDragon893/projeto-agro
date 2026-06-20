@@ -1,6 +1,6 @@
 <?php
 
-include '../../shared/conexaodb.php';
+include __DIR__ . '/../../shared/conexaodb.php';
 
 $id = $_GET['id'];
 
