@@ -1,6 +1,6 @@
 <?php 
     
-    include '../../shared/conexaodb.php';
+    include __DIR__ . '/../../shared/conexaodb.php';
     
     if(empty($_POST['nome'])){
         echo "nome invalido";
