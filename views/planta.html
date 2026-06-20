@@ -16,7 +16,7 @@
 async function comecarCultivo(idPlanta, data) {
     try{
         const resposta = await fetch(
-           "/projeto-agro/src/modules/users/addPlantaUser.php",
+           "/src/modules/users/addPlantaUser.php",
             {
                 method: "POST",
                 headers: {
@@ -50,7 +50,7 @@ const id = params.get("id");
 console.log(id);
 
 
-fetch(`/projeto-agro/src/modules/plantas/paginaPlanta.php?id=${id}`)
+fetch(`/src/modules/plantas/paginaPlanta.php?id=${id}`)
     .then(res => res.json())
     .then(dados => {
         console.log(dados);
