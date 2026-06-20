@@ -281,13 +281,8 @@ span{
     <br>
 
     <label>Enviar imagem</label>
-    <input type="file" name="arquivo" required>
+    <input type="text" name="imagem_url" required>
 
-    <?php if(isset($_SESSION['ERR']['arquivo'])): ?>
-        <span style="color:red">
-            <?= $_SESSION['ERR']['arquivo'] ?>
-        </span>
-    <?php endif; ?>
 
     <br>
 
