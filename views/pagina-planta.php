@@ -13,7 +13,7 @@
 </head>
 <body>
     <?php 
-    
+     include __DIR__ . '/../src/shared/auth.php'; ?>
     include __DIR__ . '/../src/shared/menu.php'; ?>
 </body>
 </html>
