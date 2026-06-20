@@ -281,7 +281,7 @@ span{
     <br>
 
     <label>Enviar imagem</label>
-    <input type="text" name="imagem_url" required>
+    <input type="url" name="imagem_url" required>
 
 
     <br>
