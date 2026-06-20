@@ -1,7 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+
 $logado = isset($_SESSION['id']);
 $isAdmin = !empty($_SESSION['admin']);
 $nomeUsuario = $_SESSION['nome'] ?? '';
