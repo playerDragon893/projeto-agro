@@ -8,7 +8,7 @@
         return $data;
     }
 
-    include '../../shared/conexaodb.php';
+   include __DIR__ . '/../../shared/conexaodb.php';
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nomeERR = "";
         $senhaERR = "";
