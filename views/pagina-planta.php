@@ -13,7 +13,7 @@
 </head>
 <body>
     <?php 
-    session_start();
+    
     include __DIR__ . '/../src/shared/menu.php'; ?>
 </body>
 </html>
