@@ -59,35 +59,13 @@ $dicas = $_POST["dica_cuidado"] ?? [];
 
 //envio do arquivo imagem
 
-$arquivo = $_FILES["arquivo"];
-$extensao = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));
-$caminho_upload_prefixo = __DIR__ . "/../../../public/assets/uploads/plantas/";
-$caminho_salvoDb_prefiro = "public/assets/uploads/plantas/";
-$nome_arquivo = uniqid('plantaIMG_', true) . '.' . $extensao;
 
-//tamanho do arquivo 5 mb
-$tamanho_maximo = 5 * 1024 * 1024; 
-//extensoes que pode 
-$extensoesPermitidas = ["jpg", "png", "jpeg"];
-//caminhos finais
-$caminho_final = $caminho_upload_prefixo . $nome_arquivo; //caminho da pasta para aonde vai o arquivo
-$caminho_noBanco = $caminho_salvoDb_prefiro . $nome_arquivo; //caminho que vai ta inserido no banco no caso assets/blablabla/nomedoarquivo
+$imagem_url = $_POST["imagem_url"];
 
-if($arquivo["size"] > $tamanho_maximo){
-    $_SESSION['ERR'] = "tamanho maximo ultrapassado";
+
+if(empty($imagem_url) || !filter_var($imagem_url, FILTER_VALIDATE_URL)){
+    $_SESSION['ERR'] = "URL de imagem inválida";
     exit;
-}
-elseif(!in_array($extensao, $extensoesPermitidas)){
-    $_SESSION['ERR'] = "extensao nao permitida";
-    exit; 
-}
-
-//move imagem
-if(move_uploaded_file($arquivo["tmp_name"], $caminho_final)){
-    echo "arquivo movido";
-}
-else{
-    echo "erro";
 }
 
 
@@ -138,7 +116,7 @@ $stmt->execute([
     ':pragas_comuns' => $pragas_comuns,
     ':doencas_comuns' => $doencas_comuns,
     ':categoria' => $id_categoria,
-    ':caminho_noBanco' => $caminho_noBanco
+    ':caminho_noBanco' => $imagem_url
 ]);
 
 //fase
