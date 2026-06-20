@@ -1,5 +1,5 @@
 <?php 
-    include '../../shared/conexaodb.php';
+    include __DIR__ . '/../../shared/conexaodb.php';
     
     $sql = "SELECT nome FROM categoria";
     
