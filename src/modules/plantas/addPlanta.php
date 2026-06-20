@@ -63,10 +63,7 @@ $dicas = $_POST["dica_cuidado"] ?? [];
 $imagem_url = $_POST["imagem_url"];
 
 
-if(empty($imagem_url) || !filter_var($imagem_url, FILTER_VALIDATE_URL)){
-    $_SESSION['ERR'] = "URL de imagem inválida";
-    exit;
-}
+
 
 
 
@@ -152,6 +149,8 @@ foreach ($fases as $ordem => $faseatributo) {
     ':id' => $id_planta
     ]);
 }
+
+echo "foii"
 
 
 
