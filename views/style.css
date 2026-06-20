@@ -2140,3 +2140,17 @@ body > h1 {
     color:var(--terra-media);
 
 }
+.checkbox{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    cursor:pointer;
+    color:var(--terra-media);
+    font-weight:600;
+}
+
+
+.checkbox input{
+    width:auto;
+    accent-color:var(--verde-folha);
+}
