@@ -16,5 +16,5 @@
         ':d' => $_POST['descricao']
     ]);
 
-    header("location: ../../../views/addCategoria.php ")
+    header("location: ../../../views/form/addCategoria.php ")
 ?>
