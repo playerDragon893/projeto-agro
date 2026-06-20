@@ -1,5 +1,5 @@
 <?php
-include '../../shared/conexaodb.php';
+include __DIR__ . '/../../shared/conexaodb.php';
 session_start();
 header('Content-Type: application/json');
 
