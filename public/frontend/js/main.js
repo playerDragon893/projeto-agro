@@ -1,7 +1,7 @@
 //card
 
 console.log("funciona");
-fetch('/projeto-agro/src/modules/plantas/cardPlanta.php')
+fetch('/src/modules/plantas/cardPlanta.php')
     .then(resposta => resposta.json())
     .then(dados =>{
         console.log(dados);
